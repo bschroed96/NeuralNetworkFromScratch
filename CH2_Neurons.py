@@ -40,6 +40,7 @@ def four_inputs_three_layers():
     ]
     return outputs
 
+
 # previous method is very inefficient, looping is an easy solution to this.
 def looped_layer():
     inputs = [1, 2, 3, 2.5]
@@ -58,14 +59,62 @@ def looped_layer():
         layer_outputs.append(neuron_output)
     return layer_outputs
 
+
 #
 # CH2:
 # Tensors, Arrays, and Vectors
 #
+def dot_prod(v1, v2):
+    prod = 0
+    for a, b in zip(v1,v2):
+        prod += a * b
+    return prod
+
+
+#
+# CH: 2
+# A single Neuron with NumPy
+#
+import numpy as np
+
+def single_neuron_numpy():
+    inputs = [1.0, 2.0, 3.0, 2.5]
+    weights = [0.2, 0.8, -0.5, 1.0]
+    bias = 2.0
+
+    outputs = np.dot(weights, inputs) + bias
+    return outputs
+
+#
+# A layer of neurons with NumPy
+#
+
+def layer_numpy():
+    inputs = [1, 2, 3, 2.5]
+    weights = [[0.2, 0.8, -0.5, 1],
+               [0.5, -0.91, 0.26, -0.5],
+               [-0.26, -0.27, 0.17, 0.87]]
+    biases = [2, 3, 0.5]
+
+    # first param decides output shape i.e. 3 outputs since 3 entries in weights
+    layer_outputs = np.dot(weights, inputs) + biases
+    return layer_outputs
+
+#
+# A Batch of Data
+#
+
+# our input [1,2,3,2.5] is comprised of 4 data points, features. These features collectively form a
+# feature set instance / observation / sample.
+# batch data could look like an array of our sample input with shape (8, 4) indicating 8 samples.
+
+
 
 
 if __name__ == '__main__':
     print(four_inputs_three_layers())
     print(looped_layer())
-
+    print(dot_prod([1,2,3], [2,3,4]))
+    print(single_neuron_numpy())
+    print(layer_numpy())
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
