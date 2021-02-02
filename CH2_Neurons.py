@@ -102,12 +102,42 @@ def layer_numpy():
 
 #
 # A Batch of Data
+# Page: 44
 #
 
 # our input [1,2,3,2.5] is comprised of 4 data points, features. These features collectively form a
 # feature set instance / observation / sample.
 # batch data could look like an array of our sample input with shape (8, 4) indicating 8 samples.
 
+batch = [[1,5,6,2],
+         [3,2,1,3],
+         [5,2,1,2],
+         [6,4,8,4],
+         [2,8,5,3],
+         [1,1,9,4],
+         [6,6,0,4],
+         [8,7,6,4]]
+
+#
+# Matrix Product
+# Page: 47
+#
+# [ 1 2 3 ]   [ a b c ]   [ 1*a + 2*d + 3*g 1*b + 2*e + 3*h 1*c + 2*f + 3*j]
+# [ 4 5 6 ] * [ d e f ] = [ 4*1 + 5*d + 6*g 4*b + 5*e + 6*h . . .          ]
+# [ 7 8 9 ]   [ g h j ]   [ . . .                                          ]
+
+# size of arrays must match as follows:
+# (C1, C2) * (M1, M2) , then C2 == M1
+# The resulting size is (M1, C2)
+
+#
+# Transposition for the Matrix Product
+# Page: 50
+#
+
+# [ 1 2 3 ] t  [ 1 4 7 ]
+# [ 4 5 6 ] =  [ 2 5 8 ]
+# [ 7 8 9 ]    [ 3 6 9 ]
 
 
 
